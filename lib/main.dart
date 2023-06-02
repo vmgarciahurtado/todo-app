@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:todo_app/infrastructure/api/firebase_api.dart';
+import 'package:todo_app/presentation/shared/theme/primary_theme.dart';
 import 'package:todo_app/presentation/splash/view/view.dart';
 
 void main() async {
+  Api.configureDio();
   runApp(const MyApp());
 }
 
@@ -13,10 +16,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: PrimaryTheme.theme,
       home: SplashPage(),
     );
   }

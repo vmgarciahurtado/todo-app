@@ -22,7 +22,7 @@ class Api {
     final formData = FormData.fromMap(data);
 
     try {
-      final resp = await _dio.post(path, data: formData);
+      final resp = await _dio.post(path, data: data);
       //return resp.data;
       return resp;
     } on DioError catch (e) {
