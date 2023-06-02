@@ -41,18 +41,18 @@ class RegisterView extends StatelessWidget {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Ingrese su nombre';
+                      return 'Enter your name';
                     }
                     if (value.length < 3) {
-                      return 'Nombre invalido';
+                      return 'Invalid name';
                     }
                     return null;
                   },
                   onChanged: (value) => viewModel.name = value,
                   style: const TextStyle(color: Colors.grey),
                   decoration: CustomInput.roundedInputDecoration(
-                      hint: 'Ingrese su nombre',
-                      label: 'Nombre',
+                      hint: 'Enter your name',
+                      label: 'Name',
                       icon: CupertinoIcons.person),
                 ),
                 const SizedBox(
@@ -62,15 +62,15 @@ class RegisterView extends StatelessWidget {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: (value) {
                     if (!EmailValidator.validate(value ?? '')) {
-                      return 'Email invalido';
+                      return 'Invalid email';
                     }
                     return null;
                   },
                   onChanged: (value) => viewModel.email = value,
                   style: const TextStyle(color: Colors.grey),
                   decoration: CustomInput.roundedInputDecoration(
-                      hint: 'Ingrese su correo',
-                      label: 'Correo',
+                      hint: 'Enter your email',
+                      label: 'Email',
                       icon: CupertinoIcons.mail),
                 ),
                 const SizedBox(
@@ -81,11 +81,11 @@ class RegisterView extends StatelessWidget {
                   onChanged: (value) => viewModel.password = value,
                   validator: (value) {
                     if (value == null || value.isEmpty) {
-                      return 'Ingrese su contraseña';
+                      return 'Enter your password';
                     }
 
                     if (value.length < 6) {
-                      return 'La contraseña debe tener al menos 6 caracteres';
+                      return 'Password must be at least 6 characters';
                     }
 
                     return null;
@@ -94,7 +94,7 @@ class RegisterView extends StatelessWidget {
                   style: const TextStyle(color: Colors.grey),
                   decoration: CustomInput.roundedInputDecoration(
                       hint: '**********',
-                      label: 'Contraseña',
+                      label: 'Password',
                       icon: Icons.lock_outline_rounded),
                 ),
                 const SizedBox(
@@ -107,7 +107,7 @@ class RegisterView extends StatelessWidget {
                         onPressed: () {
                           viewModel.validateForm();
                         },
-                        text: 'Registrar',
+                        text: 'Register',
                         backgroundColor: Colores.primaryColor,
                       ),
                     ),
