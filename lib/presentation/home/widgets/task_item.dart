@@ -27,9 +27,10 @@ class TaskItem extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 body: SizedBox(
-                  height: 100,
+                  height: 110,
                   width: Get.width,
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
@@ -41,7 +42,7 @@ class TaskItem extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 5,
+                        height: 4,
                       ),
                       Row(
                         children: [
@@ -52,8 +53,17 @@ class TaskItem extends StatelessWidget {
                               task.description,
                               maxLines: 5,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyles.subTitle2Style(),
+                              style: TextStyles.headlineStyle(),
                             ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            task.date,
+                            style: TextStyles.subHeadLineStyle(
+                                color: Colores.primaryColor),
                           ),
                         ],
                       ),

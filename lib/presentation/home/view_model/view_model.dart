@@ -54,7 +54,7 @@ class HomeViewModel extends GetxController {
       id = const Uuid().v4();
 
       var now = DateTime.now();
-      date = DateFormat('yyyy/MM/dd HH:mm:ss').format(now);
+      date = DateFormat('yyyy/MM/dd HH:mm').format(now);
 
       Task task = Task(
           id: id,

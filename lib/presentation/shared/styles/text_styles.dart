@@ -32,6 +32,16 @@ class TextStyles {
     );
   }
 
+  static TextStyle bodyStyle(
+      {Color color = Colors.black, bool isBold = false}) {
+    return TextStyle(
+      color: color,
+      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+      fontFamily: 'Montserrat',
+      fontSize: Get.textScaleFactor * 18,
+    );
+  }
+
   static TextStyle headlineStyle(
       {Color color = Colors.black, bool isBold = false}) {
     return TextStyle(
@@ -48,17 +58,7 @@ class TextStyles {
       color: color,
       fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
       fontFamily: 'Montserrat',
-      fontSize: Get.textScaleFactor * 14,
-    );
-  }
-
-  static TextStyle bodyStyle(
-      {Color color = Colors.black, bool isBold = false}) {
-    return TextStyle(
-      color: color,
-      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
-      fontFamily: 'Montserrat',
-      fontSize: Get.textScaleFactor * 18,
+      fontSize: Get.textScaleFactor * 12,
     );
   }
 }
