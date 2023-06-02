@@ -14,6 +14,7 @@ class AuthRepositoryHttp extends IAuthRepository {
         User user = User.fromJson(response.data);
         final storage = GetStorage();
         storage.write('auth', user.id);
+        storage.write('user_name', user.name);
         return true;
       } else {
         return false;
