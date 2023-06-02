@@ -15,7 +15,7 @@ class AuthViewModel extends GetxController {
 
   Future<void> validateForm() async {
     if (formKey.currentState!.validate()) {
-      CustomLoading(title: 'Cargando..');
+      CustomLoading(title: 'Loading..');
       bool login = await authService.login(email, password);
       Get.back();
       if (login) {

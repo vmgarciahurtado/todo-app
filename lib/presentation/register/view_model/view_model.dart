@@ -20,7 +20,7 @@ class RegisterViewModel extends GetxController {
 
   Future<void> validateForm() async {
     if (formKey.currentState!.validate()) {
-      CustomLoading(title: 'Cargando..');
+      CustomLoading(title: 'Loading..');
       id = const Uuid().v4();
       User user = User(id: id, name: name, email: email, password: password);
       bool create = await registerService.createUser(user);

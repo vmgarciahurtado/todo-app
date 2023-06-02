@@ -19,7 +19,7 @@ class Api {
   }
 
   static Future post(String path, Map<String, dynamic> data) async {
-    final formData = FormData.fromMap(data);
+    //final formData = FormData.fromMap(data);
 
     try {
       final resp = await _dio.post(path, data: data);
