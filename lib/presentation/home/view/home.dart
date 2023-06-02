@@ -5,6 +5,7 @@ import 'package:todo_app/domain/task/service/task_service.dart';
 import 'package:todo_app/infrastructure/task/task_repository_http.dart';
 import 'package:todo_app/presentation/home/view_model/view_model.dart';
 import 'package:todo_app/presentation/home/widgets/dialog_create_task.dart';
+import 'package:todo_app/presentation/home/widgets/task_item.dart';
 import 'package:todo_app/presentation/shared/styles/text_styles.dart';
 import 'package:todo_app/presentation/shared/theme/colores.dart';
 
@@ -17,6 +18,7 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               children: [
@@ -26,7 +28,7 @@ class HomeView extends StatelessWidget {
                 const Spacer(),
                 Obx(() => Text(
                       'Hi, ${viewModel.userName.value}',
-                      style: TextStyles.subTitleStyle(),
+                      style: TextStyles.titleStyle(),
                     )),
                 const Spacer(),
                 InkWell(
@@ -45,7 +47,29 @@ class HomeView extends StatelessWidget {
                 ),
                 const SizedBox(width: 20)
               ],
-            )
+            ),
+            const SizedBox(height: 20),
+            Obx(() => Visibility(
+                  visible: viewModel.listTasks.isNotEmpty,
+                  child: Container(
+                    margin: const EdgeInsets.only(left: 20),
+                    child: Text(
+                      'Tasks',
+                      style: TextStyles.subTitle2Style(),
+                    ),
+                  ),
+                )),
+            Expanded(
+              child: Obx(() => ListView.builder(
+                    itemCount: viewModel.listTasks.length,
+                    itemBuilder: (BuildContext context, int position) {
+                      return TaskItem(
+                        viewModel: viewModel,
+                        task: viewModel.listTasks[position],
+                      );
+                    },
+                  )),
+            ),
           ],
         ),
       ),

@@ -29,7 +29,7 @@ class AuthView extends StatelessWidget {
               children: [
                 Text(
                   'Login',
-                  style: TextStyles.subTitleStyle(),
+                  style: TextStyles.titleStyle(),
                 ),
                 const SizedBox(
                   height: 60,

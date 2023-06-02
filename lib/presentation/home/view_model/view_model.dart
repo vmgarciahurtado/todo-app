@@ -29,13 +29,8 @@ class HomeViewModel extends GetxController {
   String date = '';
 
   @override
-  void onInit() {
-    getUserData();
-    super.onInit();
-  }
-
-  @override
   void onReady() async {
+    await getUserData();
     getUserTasks();
     super.onReady();
   }

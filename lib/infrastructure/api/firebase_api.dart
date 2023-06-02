@@ -12,7 +12,7 @@ class Api {
   static Future httpGet(String path) async {
     try {
       final resp = await _dio.get(path);
-      return resp.data;
+      return resp;
     } on DioError catch (e) {
       throw ('Error en el GET $e');
     }

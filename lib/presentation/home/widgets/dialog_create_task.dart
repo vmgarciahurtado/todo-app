@@ -29,7 +29,7 @@ class DialogCreateTask extends StatelessWidget {
               ),
               Text(
                 'New Task',
-                style: TextStyles.subTitleStyle(),
+                style: TextStyles.titleStyle(),
               ),
               const SizedBox(
                 height: 50,

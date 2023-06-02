@@ -32,7 +32,7 @@ class RegisterView extends StatelessWidget {
               children: [
                 Text(
                   'Register',
-                  style: TextStyles.subTitleStyle(),
+                  style: TextStyles.titleStyle(),
                 ),
                 const SizedBox(
                   height: 60,

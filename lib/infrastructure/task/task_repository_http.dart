@@ -27,9 +27,11 @@ class TaskRepositoryHttp extends ITaskRepository {
   @override
   Future<List<Task>> getUserTasks(String userId) async {
     try {
-      Response response = await Api.delete('/task/$userId', {});
+      Response response = await Api.httpGet('/task/$userId');
       if (response.statusCode == 200 && response.data != []) {
-        List<Task> list = List<Task>.from(response.data);
+        List<dynamic> responseList = response.data;
+        List<Task> list =
+            List<Task>.from(responseList.map((e) => Task.fromJson(e)));
         return list;
       } else {
         return [];
