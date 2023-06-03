@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:todo_app/domain/task/model/task.dart';
 import 'package:todo_app/domain/task/service/task_service.dart';
+import 'package:todo_app/presentation/auth/view/auth.dart';
+import 'package:todo_app/presentation/home/widgets/dialog_close_session.dart';
 import 'package:todo_app/presentation/shared/cards/custom_loading.dart';
 import 'package:uuid/uuid.dart';
 import 'package:intl/intl.dart';
@@ -121,5 +123,17 @@ class HomeViewModel extends GetxController {
         backgroundColor: Colors.yellow.shade300,
       );
     }
+  }
+
+  dialogCloseSession(HomeViewModel viewModel) {
+    Get.dialog(DialogCloseSession(
+      viewModel: viewModel,
+    ));
+  }
+
+  Future<void> closeSession() async {
+    await storage.remove('auth');
+    await storage.remove('user_name');
+    Get.offAll(() => AuthView());
   }
 }

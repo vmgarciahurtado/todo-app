@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/domain/task/model/task.dart';
 import 'package:todo_app/presentation/home/view_model/view_model.dart';
-import 'package:todo_app/presentation/home/widgets/dialiog_task_detail.dart';
+import 'package:todo_app/presentation/home/widgets/dialog_task_detail.dart';
 import 'package:todo_app/presentation/shared/cards/custom_card.dart';
 import 'package:todo_app/presentation/shared/styles/text_styles.dart';
 import 'package:todo_app/presentation/shared/theme/colores.dart';

@@ -15,82 +15,87 @@ class HomeView extends StatelessWidget {
       taskService: TaskService(iTaskRepository: TaskRepositoryHttp())));
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(CupertinoIcons.arrow_left)),
-                const Spacer(),
-                Obx(() => Text(
-                      'Hi, ${viewModel.userName.value}',
-                      style: TextStyles.titleStyle(),
+    return WillPopScope(
+      onWillPop: () => viewModel.dialogCloseSession(viewModel),
+      child: Scaffold(
+        body: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  IconButton(
+                      onPressed: () {
+                        viewModel.dialogCloseSession(viewModel);
+                      },
+                      icon: const Icon(CupertinoIcons.arrow_left)),
+                  const Spacer(),
+                  Obx(() => Text(
+                        'Hi, ${viewModel.userName.value}',
+                        style: TextStyles.titleStyle(),
+                      )),
+                  const Spacer(),
+                  InkWell(
+                    onTap: () {
+                      Get.dialog(DialogCreateTask(
+                        viewModel: viewModel,
+                      ));
+                    },
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colores.secondaryColor,
+                            borderRadius: BorderRadius.circular(10)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 7, vertical: 4),
+                        child: const Icon(CupertinoIcons.add)),
+                  ),
+                  const SizedBox(width: 20)
+                ],
+              ),
+              Obx(
+                () => Visibility(
+                    visible: viewModel.listTasks.isEmpty,
+                    child: Expanded(
+                      child: Center(
+                        child: Column(
+                          children: [
+                            const SizedBox(height: 200),
+                            Text(
+                              'No Tasks Yet',
+                              style: TextStyles.subTitle2Style(),
+                            ),
+                          ],
+                        ),
+                      ),
                     )),
-                const Spacer(),
-                InkWell(
-                  onTap: () {
-                    Get.dialog(DialogCreateTask(
-                      viewModel: viewModel,
-                    ));
-                  },
-                  child: Container(
-                      decoration: BoxDecoration(
-                          color: Colores.secondaryColor,
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 7, vertical: 4),
-                      child: const Icon(CupertinoIcons.add)),
-                ),
-                const SizedBox(width: 20)
-              ],
-            ),
-            Obx(
-              () => Visibility(
-                  visible: viewModel.listTasks.isEmpty,
-                  child: Expanded(
-                    child: Center(
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 200),
-                          Text(
-                            'No Tasks Yet',
-                            style: TextStyles.subTitle2Style(),
-                          ),
-                        ],
+              ),
+              const SizedBox(height: 20),
+              Obx(() => Visibility(
+                    visible: viewModel.listTasks.isNotEmpty,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 20),
+                      child: Text(
+                        'Tasks',
+                        style: TextStyles.subTitle2Style(),
                       ),
                     ),
                   )),
-            ),
-            const SizedBox(height: 20),
-            Obx(() => Visibility(
-                  visible: viewModel.listTasks.isNotEmpty,
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Tasks',
-                      style: TextStyles.subTitle2Style(),
-                    ),
-                  ),
-                )),
-            Expanded(
-              child: Obx(() => Visibility(
-                    visible: viewModel.listTasks.isNotEmpty,
-                    child: ListView.builder(
-                      itemCount: viewModel.listTasks.length,
-                      itemBuilder: (BuildContext context, int position) {
-                        return TaskItem(
-                          viewModel: viewModel,
-                          task: viewModel.listTasks[position],
-                        );
-                      },
-                    ),
-                  )),
-            ),
-          ],
+              Expanded(
+                child: Obx(() => Visibility(
+                      visible: viewModel.listTasks.isNotEmpty,
+                      child: ListView.builder(
+                        itemCount: viewModel.listTasks.length,
+                        itemBuilder: (BuildContext context, int position) {
+                          return TaskItem(
+                            viewModel: viewModel,
+                            task: viewModel.listTasks[position],
+                          );
+                        },
+                      ),
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );
