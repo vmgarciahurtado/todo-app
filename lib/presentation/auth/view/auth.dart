@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:todo_app/domain/auth/service/auth_service.dart';
 import 'package:todo_app/infrastructure/auth/auth_repository_http.dart';
 import 'package:todo_app/presentation/auth/view_model/view_model.dart';
+import 'package:todo_app/presentation/register/view/register.dart';
 import 'package:todo_app/presentation/shared/buttons/rounded_button.dart';
 import 'package:todo_app/presentation/shared/inputs/custom_input.dart';
 import 'package:todo_app/presentation/shared/styles/text_styles.dart';
@@ -70,7 +71,24 @@ class AuthView extends StatelessWidget {
                       icon: Icons.lock_outline_rounded),
                 ),
                 const SizedBox(
-                  height: 40,
+                  height: 10,
+                ),
+                Row(
+                  children: [
+                    InkWell(
+                      onTap: () => Get.to(() => RegisterView()),
+                      child: Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        child: Text(
+                          'Create an account',
+                          style: TextStyles.subHeadLineUnderLineStyle(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 30,
                 ),
                 Row(
                   children: [

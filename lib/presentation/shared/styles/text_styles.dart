@@ -52,6 +52,17 @@ class TextStyles {
     );
   }
 
+  static TextStyle subHeadLineUnderLineStyle(
+      {Color color = Colors.black, bool isBold = false}) {
+    return TextStyle(
+      decoration: TextDecoration.underline,
+      color: color,
+      fontWeight: isBold ? FontWeight.bold : FontWeight.normal,
+      fontFamily: 'OpenSans',
+      fontSize: Get.textScaleFactor * 14,
+    );
+  }
+
   static TextStyle subHeadLineStyle(
       {Color color = Colors.black, bool isBold = false}) {
     return TextStyle(
