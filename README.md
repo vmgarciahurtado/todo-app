@@ -6,7 +6,7 @@
 <br>
 <br>
 
-[Instalacion directa (Android)](https://i.diawi.com/Sv2m6T)
+[Instalacion directa (Android)](https://i.diawi.com/sdkKDW)
 <br>
 <img align="left"  src="./assets/images/diawi.png" style="color:#FFF;border:5px solid white"/>
 
