@@ -70,20 +70,9 @@ class HomeView extends StatelessWidget {
                   visible: viewModel.listTasks.isNotEmpty,
                   child: Container(
                     margin: const EdgeInsets.only(left: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Tasks',
-                          style: TextStyles.subTitle2Style(),
-                        ),
-                        const Spacer(),
-                        IconButton(
-                            onPressed: () {},
-                            icon: const Image(
-                                width: 20,
-                                height: 20,
-                                image: AssetImage('assets/icons/order.png')))
-                      ],
+                    child: Text(
+                      'Tasks',
+                      style: TextStyles.subTitle2Style(),
                     ),
                   ),
                 )),
