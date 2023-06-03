@@ -31,11 +31,9 @@ class Api {
   }
 
   static Future put(String path, Map<String, dynamic> data) async {
-    final formData = FormData.fromMap(data);
-
     try {
-      final resp = await _dio.put(path, data: formData);
-      return resp.data;
+      final resp = await _dio.put(path, data: data);
+      return resp;
     } on DioError catch (e) {
       throw ('Error en el PUT $e');
     }

@@ -79,9 +79,26 @@ class HomeViewModel extends GetxController {
     }
   }
 
-  Future<void> deteleTask(String id) async {
+  Future<void> deteleTask(String taskId) async {
     CustomLoading(title: 'Deleting task..');
-    bool task = await taskService.deleteTask(id);
+    bool task = await taskService.deleteTask(taskId);
+    Get.back();
+    if (task) {
+      getUserTasks();
+    } else {
+      Get.snackbar(
+        'Error',
+        'An error has ocurred, check your internet network and try again.',
+        duration: const Duration(seconds: 2),
+        backgroundColor: Colors.yellow.shade300,
+      );
+    }
+  }
+
+  Future<void> updateTask(String taskId, String status) async {
+    Get.back();
+    CustomLoading(title: 'Saving..');
+    bool task = await taskService.updateTask(taskId, status);
     Get.back();
     if (task) {
       getUserTasks();

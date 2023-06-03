@@ -2,6 +2,7 @@ class Task {
   final String id;
   final String title;
   final String description;
+  String? enDescription;
   final String state;
   final String userId;
   final String date;
@@ -10,6 +11,7 @@ class Task {
     required this.id,
     required this.title,
     required this.description,
+    this.enDescription,
     required this.state,
     required this.userId,
     required this.date,
@@ -19,6 +21,7 @@ class Task {
         id: json["id"],
         title: json["title"],
         description: json["description"],
+        enDescription: json["enDescription"],
         state: json["state"],
         userId: json["userId"],
         date: json["date"],

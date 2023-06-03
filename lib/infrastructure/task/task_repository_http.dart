@@ -44,8 +44,8 @@ class TaskRepositoryHttp extends ITaskRepository {
   @override
   Future<bool> updateTask(String taskId, String state) async {
     try {
-      final data = {'state': state};
-      Response response = await Api.put('/task/$taskId', data);
+      final data = {'state': state, 'taskId': taskId};
+      Response response = await Api.put('/task', data);
       return response.statusCode == 200;
     } catch (e) {
       return false;

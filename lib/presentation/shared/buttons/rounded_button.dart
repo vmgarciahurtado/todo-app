@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo_app/presentation/shared/styles/text_styles.dart';
+import 'package:todo_app/presentation/shared/theme/colores.dart';
 
 class CustomButton extends StatelessWidget {
   CustomButton(
@@ -23,8 +24,8 @@ class CustomButton extends StatelessWidget {
   final bool primaryColor;
   final bool? blockDoubleClick;
   final Color? backgroundColor;
-  final AssetImage? leftIcon;
-  final AssetImage? rightIcon;
+  final Widget? leftIcon;
+  final Widget? rightIcon;
 
   final RxBool absorbPointer = false.obs;
 
@@ -42,6 +43,7 @@ class CustomButton extends StatelessWidget {
             },
             style: ElevatedButton.styleFrom(
               minimumSize: Size(0, height),
+              backgroundColor: backgroundColor ?? Colores.primaryColor,
               elevation: 5,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -52,9 +54,8 @@ class CustomButton extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 if (leftIcon != null)
-                  ImageIcon(
-                    leftIcon,
-                    color: Colors.white,
+                  Container(
+                    child: leftIcon,
                   ),
                 if (leftIcon != null || rightIcon != null) const Spacer(),
                 Text(
@@ -64,9 +65,8 @@ class CustomButton extends StatelessWidget {
                 ),
                 if (leftIcon != null || rightIcon != null) const Spacer(),
                 if (rightIcon != null)
-                  ImageIcon(
-                    rightIcon,
-                    color: Colors.white,
+                  Container(
+                    child: rightIcon,
                   ),
               ],
             ),

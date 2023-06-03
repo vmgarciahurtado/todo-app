@@ -22,6 +22,6 @@ class PrimaryTheme {
         ),
       ),
       scaffoldBackgroundColor: Colors.grey.shade100,
-      floatingActionButtonTheme:
-          FloatingActionButtonThemeData(backgroundColor: Colores.primaryColor));
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colores.secondaryColor));
 }
