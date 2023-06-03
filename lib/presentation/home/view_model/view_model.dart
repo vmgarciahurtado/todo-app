@@ -42,7 +42,18 @@ class HomeViewModel extends GetxController {
 
   Future<void> getUserTasks() async {
     CustomLoading(title: 'Loading tasks..');
-    listTasks.value = await taskService.getUserTasks(userId);
+    List<Task> sortedList = await taskService.getUserTasks(userId);
+
+    sortedList.sort((a, b) {
+      int byState = b.state.compareTo(a.state);
+      if (byState == 0) {
+        return b.date.compareTo(a.date);
+      } else {
+        return byState;
+      }
+    });
+
+    listTasks.value = sortedList;
     Get.back();
   }
 
