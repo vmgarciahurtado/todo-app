@@ -78,4 +78,20 @@ class HomeViewModel extends GetxController {
       }
     }
   }
+
+  Future<void> deteleTask(String id) async {
+    CustomLoading(title: 'Deleting task..');
+    bool task = await taskService.deleteTask(id);
+    Get.back();
+    if (task) {
+      getUserTasks();
+    } else {
+      Get.snackbar(
+        'Error',
+        'An error has ocurred, check your internet network and try again.',
+        duration: const Duration(seconds: 2),
+        backgroundColor: Colors.yellow.shade300,
+      );
+    }
+  }
 }

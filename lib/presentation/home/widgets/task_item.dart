@@ -34,10 +34,24 @@ class TaskItem extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(
-                            task.title,
-                            style: TextStyles.subTitleStyle(
-                                color: Colores.primaryColor),
+                          Icon(
+                            Icons.circle,
+                            color: task.state == 'true'
+                                ? Colores.primaryColor
+                                : Colors.green,
+                            size: 10,
+                          ),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          SizedBox(
+                            width: 310,
+                            child: Text(
+                              task.title,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyles.subTitleStyle(
+                                  color: Colores.primaryColor),
+                            ),
                           ),
                         ],
                       ),
@@ -88,7 +102,9 @@ class TaskItem extends StatelessWidget {
                     height: 30, image: AssetImage('assets/icons/edit.png')),
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  viewModel.deteleTask(task.id);
+                },
                 child: const Image(
                     height: 30, image: AssetImage('assets/icons/remove.png')),
               ),

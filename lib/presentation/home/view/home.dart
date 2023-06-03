@@ -48,26 +48,57 @@ class HomeView extends StatelessWidget {
                 const SizedBox(width: 20)
               ],
             ),
+            Obx(
+              () => Visibility(
+                  visible: viewModel.listTasks.isEmpty,
+                  child: Expanded(
+                    child: Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 200),
+                          Text(
+                            'No Tasks Yet',
+                            style: TextStyles.subTitle2Style(),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
+            ),
             const SizedBox(height: 20),
             Obx(() => Visibility(
                   visible: viewModel.listTasks.isNotEmpty,
                   child: Container(
                     margin: const EdgeInsets.only(left: 20),
-                    child: Text(
-                      'Tasks',
-                      style: TextStyles.subTitle2Style(),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Tasks',
+                          style: TextStyles.subTitle2Style(),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Image(
+                                width: 20,
+                                height: 20,
+                                image: AssetImage('assets/icons/order.png')))
+                      ],
                     ),
                   ),
                 )),
             Expanded(
-              child: Obx(() => ListView.builder(
-                    itemCount: viewModel.listTasks.length,
-                    itemBuilder: (BuildContext context, int position) {
-                      return TaskItem(
-                        viewModel: viewModel,
-                        task: viewModel.listTasks[position],
-                      );
-                    },
+              child: Obx(() => Visibility(
+                    visible: viewModel.listTasks.isNotEmpty,
+                    child: ListView.builder(
+                      itemCount: viewModel.listTasks.length,
+                      itemBuilder: (BuildContext context, int position) {
+                        return TaskItem(
+                          viewModel: viewModel,
+                          task: viewModel.listTasks[position],
+                        );
+                      },
+                    ),
                   )),
             ),
           ],

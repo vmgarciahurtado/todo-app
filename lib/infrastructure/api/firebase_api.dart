@@ -46,7 +46,7 @@ class Api {
 
     try {
       final resp = await _dio.delete(path, data: formData);
-      return resp.data;
+      return resp;
     } on DioError catch (e) {
       throw ('Error en el DELETE $e');
     }
